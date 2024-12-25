@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(166, 166, 174);
+    margin: 0, auto;
+}
+
+#container-el{
+    margin-top: 3px;
+    margin-bottom: 10rem;
+    margin-left: 5px;
+
+}
+#input-el{
+    padding: 8px;
+}
