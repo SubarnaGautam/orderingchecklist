@@ -1,14 +1,92 @@
 body{
     background-color: rgb(166, 166, 174);
     margin: 0, auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    padding: 0;
+    height: 100%;
 }
 
 #container-el{
     margin-top: 3px;
-    margin-bottom: 10rem;
+ 
     margin-left: 5px;
 
+
+}
+#delete-btn{
+    margin-top: 2rem;
 }
 #input-el{
-    padding: 8px;
+    padding: 3px;
+    width: 70%;
+}
+#li-el{
+    margin-left: 0px;
+    list-style:lower-alpha;
+    color: rgb(4, 84, 9);
+    font-weight: 90%;
+}
+#product-container {
+    height: 100%;
+    width: 70%;
+    background-color: rgb(134, 144, 144);
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap: 1px;
+    
+    
+}
+
+   
+#button-container{
+    margin-bottom: 50px;
+}
+
+#button-container button{
+    background-color: rgb(71, 162, 159);
+    
+}
+
+#table-container {
+    display: flex; /* Arrange children in a row */
+    flex-wrap: wrap; /* Allow the items to wrap if there's not enough space */
+    justify-content: flex-start; /* Align items to the start of the container */
+    gap: 10px; /* Set the gap between the tables */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Ensure padding/border are included in the container's width */
+    padding: 10px; /* Optional padding around the container */
+    border: 1px solid red; /* Debugging: Visualize the container */
+}
+
+.table {
+    flex: 1 1 20%; /* Each table takes up 20% of the container width */
+    max-width: 20%; /* Prevent the tables from exceeding 20% width */
+    border: 2px solid rgb(168, 107, 107); /* Debugging: Visualize the tables */
+    box-sizing: border-box; /* Include padding/borders in width calculations */
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px; /* Optional: To give tables rounded corners */
+}
+
+.table h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px; /* Space between the heading and the list */
+}
+
+.table ul {
+    padding-left: 0; /* Remove default padding from the list */
+}
+   
+
+.table li{
+
+    text-align: left;
+    list-style: none;
+    color: rgb(2, 2, 1);
+    font-weight: bold
 }
