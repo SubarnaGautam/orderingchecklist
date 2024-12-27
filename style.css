@@ -1,10 +1,15 @@
 body{
-    background-color: rgb(166, 166, 174);
+    background-color: rgb(225, 225, 235);
     margin: 0, auto;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     padding: 0;
     height: 100%;
+    color: rgb(72, 51, 91);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
 }
 
 #container-el{
@@ -13,13 +18,29 @@ body{
     margin-left: 5px;
 
 
+}#add-btn{
+    height: 30px;
+   width: 70px;
+   color: rgb(6, 10, 3);
+   font-weight: bold;
+   background-color: rgb(0, 125, 235);
 }
+
 #delete-btn{
     margin-top: 2rem;
+   height: 30px;
+   width: 70px;
+   border-radius: 2px;
+   color: rgb(6, 10, 3);
+   font-weight: bold;
+   background-color: rgb(0, 125, 235);
+
 }
+
 #input-el{
     padding: 3px;
     width: 70%;
+    height: 30px;
 }
 #li-el{
     margin-left: 0px;
@@ -28,14 +49,16 @@ body{
     font-weight: 90%;
 }
 #product-container {
+
     height: 100%;
-    width: 70%;
+    width: 100%;
     background-color: rgb(134, 144, 144);
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:flex-start;
     gap: 1px;
+    color: rgb(102, 22, 60);
     
     
 }
@@ -43,39 +66,49 @@ body{
    
 #button-container{
     margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 #button-container button{
-    background-color: rgb(71, 162, 159);
-    
+   
+    margin-top: 2rem;
+    height: 30px;
+    width: 70px;
+    border-radius: 2px;
+    color: rgb(6, 10, 3);
+    font-weight: bold;
+    background-color: rgb(177, 144, 67);
 }
 
-#table-container {
-    display: flex; /* Arrange children in a row */
-    flex-wrap: wrap; /* Allow the items to wrap if there's not enough space */
-    justify-content: flex-start; /* Align items to the start of the container */
-    gap: 10px; /* Set the gap between the tables */
-    width: 100%; /* Full width of the container */
-    box-sizing: border-box; /* Ensure padding/border are included in the container's width */
-    padding: 10px; /* Optional padding around the container */
-    border: 1px solid red; /* Debugging: Visualize the container */
-}
+/*#table-container{
+display: inline-flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100%;
+justify-content: center;
+align-items: stretch;
+row-gap: 20px;
 
-.table {
-    flex: 1 1 20%; /* Each table takes up 20% of the container width */
-    max-width: 20%; /* Prevent the tables from exceeding 20% width */
-    border: 2px solid rgb(168, 107, 107); /* Debugging: Visualize the tables */
-    box-sizing: border-box; /* Include padding/borders in width calculations */
-    text-align: center;
-    padding: 10px;
+}*/
+#table-container .table{
+    display: flex;
+    color:  rgb(102, 22, 60);;
+}
+.table{
+    border: 1px solid bisque;
     display: flex;
     flex-direction: column;
-    border-radius: 5px; /* Optional: To give tables rounded corners */
+  
+    
+
 }
+
 
 .table h3 {
     font-size: 1.2rem;
-    margin-bottom: 10px; /* Space between the heading and the list */
+    margin-bottom: 3px; /* Space between the heading and the list */
 }
 
 .table ul {

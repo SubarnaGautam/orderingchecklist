@@ -21,42 +21,61 @@ const meatUlel = document.querySelector("#meatUl-el")
 const seafoodUlel = document.querySelector("#seafoodUl-el")
 const frozenUlel = document.querySelector("#frozenUl-el")
 
+const currrentDate = new Date()
+const formattedDate = currrentDate.toISOString().split('T')[0];
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const currentDay = dayNames[currrentDate.getDay()];
+const headingEl = document.querySelector("#heading-el")
+headingEl.innerHTML += ` ${formattedDate} - ${currentDay}` 
+
 
 let inputValues = []
-addBtn.addEventListener("click", function(){
+deleteBtn.style.display = "none";
+inputValues = JSON.parse(localStorage.getItem("orderLit"))
 
 
-const inputValue = inputEl.value.trim()
 
+addBtn.addEventListener("click", function(){ 
+    let inputValue = inputEl.value.trim()
     console.log("clicked")
-
-
     if(inputValue){
         inputValues.push(inputValue)
-    productContainer.style.display ="block"
-    productListContainer.style.display = "none"                               
-    productListContainer.innerHTML = 
+        localStorage.setItem("orderLit", JSON.stringify(inputValues))
+        console.log(inputValues)
+      
+        productContainer.style.display ="block"
+        productListContainer.style.display = "none"                               
+        productListContainer.innerHTML = 
     
                     `<ul>
                         <li id ="li-el" >${inputValue} 
                         <input type = "checkbox" id = "check"></li> 
                     </ul>`
-                }
-    
-})
+        
+ }})
+
+
 
 productBtns.forEach((button) => {
     button.addEventListener("click", function(){
-      
-        const inputValue = inputEl.value.trim()
+     let inputValue = inputEl.value.trim()
+    console.log(`${button.id} clicked`)
 
-       
-        console.log(`${button.id} clicked`)
 if (inputValue){
-    inputValues.push(inputValue)
+    
+    localStorage.setItem("orderLit", JSON.stringify(inputValues))
     tableContainer.style.display = "block"
+
         if (button.id === "fresh-btn"){
-            freshUlel.innerHTML += `<li>${inputValue}</li>`}
+
+            freshUlel.innerHTML = "";
+            let datainLs = JSON.parse(localStorage.getItem("orderLit"))
+            for (let i =0; i < datainLs.length; i++){
+                freshUlel.innerHTML += `<li>${datainLs[i]}</li>`}
+                productContainer.style.display = "none"
+            } 
+            //localStorage.getItem("orderLit", JSON.parse)
+           
     
         else if (button.id === "dry-btn"){
             dryUlel.innerHTML += `<li>${inputValue}</li>`
@@ -67,24 +86,14 @@ if (inputValue){
         }else if (button.id === "frozen-btn"){
             frozenUlel.innerHTML += `<li>${inputValue}</li>`
         }
-        
-    
-    
         inputEl.value=""
+        deleteBtn.style.display = "block"
     
-       } })})
-
-
-
-
-
-
-
-
+       }})})
+       
 deleteBtn.addEventListener("click", function(){
-    containerEl.innerHTML = ""
+    localStorage.removeItem("orderLit")
+    freshUlel.innerHTML = ""
+
 
 })
-
-
-    
