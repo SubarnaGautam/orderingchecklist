@@ -29,9 +29,9 @@ const headingEl = document.querySelector("#heading-el")
 headingEl.innerHTML += ` ${formattedDate} - ${currentDay}` 
 
 
-let inputValues = []
+const inputValues = []
 deleteBtn.style.display = "none";
-inputValues = JSON.parse(localStorage.getItem("orderLit"))
+//inputValues = JSON.parse(localStorage.getItem("orderLit"))  
 
 
 
@@ -39,7 +39,7 @@ addBtn.addEventListener("click", function(){
     let inputValue = inputEl.value.trim()
     console.log("clicked")
     if(inputValue){
-        
+        inputValues.push(inputValue)
         localStorage.setItem("orderLit", JSON.stringify(inputValues))
         console.log(inputValues)
       
