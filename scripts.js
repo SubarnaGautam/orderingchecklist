@@ -39,7 +39,7 @@ addBtn.addEventListener("click", function(){
     let inputValue = inputEl.value.trim()
     console.log("clicked")
     if(inputValue){
-        inputValues.push(inputValue)
+        
         localStorage.setItem("orderLit", JSON.stringify(inputValues))
         console.log(inputValues)
       
