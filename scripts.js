@@ -1,99 +1,186 @@
-const addBtn = document.querySelector("#add-btn")
-const deleteBtn = document.querySelector("#delete-btn")
-const inputEl = document.querySelector("#input-el")
-const productListContainer = document.querySelector("#productList-el")
-const outerContainer  = document.querySelector("#outerContainer-el")
-const productContainer = document.querySelector("#product-container")
-const tableContainer = document.querySelector("#table-container")
-tableContainer.style.display = "none"
-productContainer.style.display = "none"
+// === 1. Global Variables ===
+// DOM Elements
+const addBtn = document.querySelector("#add-btn");
+const deleteBtn = document.querySelector("#delete-btn");
+const resultBtn = document.querySelector("#result-btn");
+const backBtn = document.querySelector("#back-btn");
 
-const productBtns= document.querySelectorAll(".product-btn")
-const freshBtn = document.querySelector("#fresh-btn")
-const dryBtn = document.querySelector("#dry-btn")
-const meatBtn = document.querySelector("#meat-btn")
-const seafoodBtn = document.querySelector("#seafood-btn")
-const frozenBtn = document.querySelector("#frozen-btn")
+const inputEl = document.querySelector("#input-el");
+const productListContainer = document.querySelector("#productList-el");
+const outerContainer = document.querySelector("#outerContainer-el");
+const productContainer = document.querySelector("#product-container");
+const tableContainer = document.querySelector("#table-container");
+const resultEl = document.querySelector("#result-el");
 
-const freshUlel = document.querySelector("#freshUl-el")
-const dryUlel = document.querySelector("#dryUl-el")
-const meatUlel = document.querySelector("#meatUl-el")
-const seafoodUlel = document.querySelector("#seafoodUl-el")
-const frozenUlel = document.querySelector("#frozenUl-el")
+const productBtns = document.querySelectorAll(".product-btn");
+const freshBtn = document.querySelector("#fresh-btn");
+const dryBtn = document.querySelector("#dry-btn");
+const meatBtn = document.querySelector("#meat-btn");
+const seafoodBtn = document.querySelector("#seafood-btn");
+const frozenBtn = document.querySelector("#frozen-btn");
 
-const currrentDate = new Date()
-const formattedDate = currrentDate.toISOString().split('T')[0];
-const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const freshUlel = document.querySelector("#freshUl-el");
+const dryUlel = document.querySelector("#dryUl-el");
+const meatUlel = document.querySelector("#meatUl-el");
+const seafoodUlel = document.querySelector("#seafoodUl-el");
+const frozenUlel = document.querySelector("#frozenUl-el");
+
+// Date and Heading
+const currrentDate = new Date();
+const formattedDate = currrentDate.toISOString().split("T")[0];
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const currentDay = dayNames[currrentDate.getDay()];
-const headingEl = document.querySelector("#heading-el")
-headingEl.innerHTML += ` ${formattedDate} - ${currentDay}` 
+const headingEl = document.querySelector("#heading-el");
 
+// Input Values and Local Storage Initialization
+const inputValues = [];
+if (!localStorage.getItem("freshList")) {
+    localStorage.setItem("freshList", JSON.stringify([]));
+}
 
-const inputValues = []
+// UI State Initialization
+tableContainer.style.display = "none";
+productContainer.style.display = "none";
 deleteBtn.style.display = "none";
-//inputValues = JSON.parse(localStorage.getItem("orderLit"))  
+backBtn.style.display = "none";
+resultEl.style.display = "none";
 
 
+headingEl.innerHTML += ` ${formattedDate} - ${currentDay}`;
 
-addBtn.addEventListener("click", function(){ 
-    let inputValue = inputEl.value.trim()
-    console.log("clicked")
-    if(inputValue){
-        inputValues.push(inputValue)
-        localStorage.setItem("orderLit", JSON.stringify(inputValues))
-        console.log(inputValues)
-      
-        productContainer.style.display ="block"
-        productListContainer.style.display = "none"                               
-        productListContainer.innerHTML = 
-    
-                    `<ul>
-                        <li id ="li-el" >${inputValue} 
-                        <input type = "checkbox" id = "check"></li> 
-                    </ul>`
-        
- }})
+// === 2. Add Button Logic ===
+addBtn.addEventListener("click", function () {
+    const inputValue = inputEl.value.trim();
+    if (inputValue) {
+        //console.log("clicked");
+        productContainer.style.display = "block";
+        productListContainer.style.display = "none";
+    } else {
+        alert("Please enter a product to add!");
+    }
+});
 
-
-
+// === 3. Product Category Buttons Logic ===
 productBtns.forEach((button) => {
-    button.addEventListener("click", function(){
-     let inputValue = inputEl.value.trim()
-    console.log(`${button.id} clicked`)
+    button.addEventListener("click", function () {
+        const inputValue = inputEl.value.trim();
+        if (!inputValue) return;
 
-if (inputValue){
-    
-    localStorage.setItem("orderLit", JSON.stringify(inputValues))
-    tableContainer.style.display = "block"
+        console.log(`${button.id} clicked`);
 
-        if (button.id === "fresh-btn"){
+        // Update Local Storage
+        //const storedData = JSON.parse(localStorage.getItem("orderLit"));
+       // storedData.push(inputValue);
+        //localStorage.setItem("orderLit", JSON.stringify(storedData));
+         // Show Table and Populate Lists with innerHTML
+        tableContainer.style.display = "block";
 
+        if (button.id === "fresh-btn")  {
+           let storedDataF = JSON.parse(localStorage.getItem("freshList")) || []
+            storedDataF.push(inputValue)
+            localStorage.setItem("freshList", JSON.stringify(storedDataF))
             freshUlel.innerHTML = "";
-            let datainLs = JSON.parse(localStorage.getItem("orderLit"))
-            for (let i =0; i < datainLs.length; i++){
-                freshUlel.innerHTML += `<li>${datainLs[i]}</li>`}
-                productContainer.style.display = "none"
-            } 
-            //localStorage.getItem("orderLit", JSON.parse)
+            storedDataF.forEach((item) => {
+                freshUlel.innerHTML += `<li>${item}</li>`
+            })
+        
+            
+            
+        } else if (button.id === "dry-btn") {
+            let storedDataD = JSON.parse(localStorage.getItem("dryList")) || []
+            storedDataD.push(inputValue)
+            localStorage.setItem("dryList", JSON.stringify(storedDataD))
+            dryUlel.innerHTML = "";
+            storedDataD.forEach((item) => {
+                freshUlel.innerHTML += `<li>${JSON.parse(localStorage.getItem("freshList",))}</li>`
+                dryUlel.innerHTML += `<li>${item}</li>`
            
-    
-        else if (button.id === "dry-btn"){
-            dryUlel.innerHTML += `<li>${inputValue}</li>`
-        }else if (button.id === "meat-btn"){
-            meatUlel.innerHTML += `<li>${inputValue}</li>`
-        }else if (button.id === "seafood-btn"){
-            seafoodUlel.innerHTML += `<li>${inputValue}</li>`
-        }else if (button.id === "frozen-btn"){
-            frozenUlel.innerHTML += `<li>${inputValue}</li>`
+        })
+        } else if (button.id === "meat-btn") {
+
+            let storedDataM = JSON.parse(localStorage.getItem("meatList")) || []
+            storedDataM.push(inputValue)
+            localStorage.setItem("meatList", JSON.stringify(storedDataM))
+            meatUlel.innerHTML = ""
+            storedDataM.forEach((item) => {
+                meatUlel.innerHTML += `<li>${item}</li>` 
+            })
+        } else if (button.id === "seafood-btn") {
+
+            let storedDataS = JSON.parse(localStorage.getItem("seafoodList")) || []
+            storedDataS.push(inputValue)
+            localStorage.setItem("seafoodList", JSON.stringify(storedDataS))
+            seafoodUlel.innerHTML = ""
+            storedDataS.forEach((item) => {
+                seafoodUlel.innerHTML += `<li>${item}</li>` 
+            })
+           
+        } else if (button.id === "frozen-btn") {
+
+            let storedDataFz = JSON.parse(localStorage.getItem("frozenList")) || []
+            storedDataFz.push(inputValue)
+            localStorage.setItem("frozenList", JSON.stringify(storedDataFz))
+            frozenUlel.innerHTML = ""
+            storedDataFz.forEach((item)=>{
+                frozenUlel.innerHTML += `<li>${item}</li>`;
+                }
+            )
+            
         }
-        inputEl.value=""
-        deleteBtn.style.display = "block"
+
+        productContainer.style.display = "none";
+        inputEl.value = "";
+        deleteBtn.style.display = "block";
+        resultBtn.style.display = "block";
+    })})
+
+
+// === 4. Delete Button Logic ===
+deleteBtn.addEventListener("click", function () {
+    localStorage.removeItem("freshList");
+    localStorage.removeItem("dryList");
+    localStorage.removeItem("meatList");
+    localStorage.removeItem("seafoodList");
+    localStorage.removeItem("FrozenList");
+
+    // Clear lists using innerHTML
+    freshUlel.innerHTML = "";
+    dryUlel.innerHTML = "";
+    meatUlel.innerHTML = "";
+    seafoodUlel.innerHTML = "";
+    frozenUlel.innerHTML = "";
+
+    tableContainer.style.display = "none";
+    deleteBtn.style.display = "none";
+    resultEl.style.display = "none";
+});
+
+resultBtn.addEventListener("click", function () {
+    const keys = ["freshList", "dryList", "meatList", "FrozenList", "seafoodList"];
+    const resultValues = keys.map(key => JSON.parse(localStorage.getItem(key)) || []);
     
-       }})})
-       
-deleteBtn.addEventListener("click", function(){
-    localStorage.removeItem("orderLit")
-    freshUlel.innerHTML = ""
+    console.log("clicked");
+    
+    resultEl.innerHTML = `
+        <h3>Order list.</h3>
+        ${resultValues.map((list, index) => `
+            <h4>${keys[index]}:</h4>
+            <ul>
+                ${list.map(item => `<li>${item}</li>`).join("")}
+            </ul>`
+        ).join("")}
+    `;
 
-
+    resultBtn.style.display = "none"
+    resultEl.style.display= "block"
+    backBtn.style.display="block"
+    deleteBtn.style.display = "block"
+    tableContainer.style.display = "none"
+});
+backBtn.addEventListener("click", function (){
+    resultEl.style.display = "none"
+    backBtn.style.display = "none"
+    resultBtn.style.display= "block"
+      deleteBtn.style.display = "none"
+  
 })
