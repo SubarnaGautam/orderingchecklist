@@ -76,28 +76,22 @@ productBtns.forEach((button) => {
         tableContainer.style.display = "block";
 
         if (button.id === "fresh-btn")  {
-           let storedDataF = JSON.parse(localStorage.getItem("freshList")) || []
+            let storedDataF = JSON.parse(localStorage.getItem("freshList")) || []
             storedDataF.push(inputValue)
             localStorage.setItem("freshList", JSON.stringify(storedDataF))
             freshUlel.innerHTML = "";
             storedDataF.forEach((item) => {
                 freshUlel.innerHTML += `<li>${item}</li>`
             })
-        
-            
-            
         } else if (button.id === "dry-btn") {
             let storedDataD = JSON.parse(localStorage.getItem("dryList")) || []
             storedDataD.push(inputValue)
             localStorage.setItem("dryList", JSON.stringify(storedDataD))
             dryUlel.innerHTML = "";
             storedDataD.forEach((item) => {
-                freshUlel.innerHTML += `<li>${JSON.parse(localStorage.getItem("freshList",))}</li>`
                 dryUlel.innerHTML += `<li>${item}</li>`
-           
-        })
+            })
         } else if (button.id === "meat-btn") {
-
             let storedDataM = JSON.parse(localStorage.getItem("meatList")) || []
             storedDataM.push(inputValue)
             localStorage.setItem("meatList", JSON.stringify(storedDataM))
@@ -106,7 +100,6 @@ productBtns.forEach((button) => {
                 meatUlel.innerHTML += `<li>${item}</li>` 
             })
         } else if (button.id === "seafood-btn") {
-
             let storedDataS = JSON.parse(localStorage.getItem("seafoodList")) || []
             storedDataS.push(inputValue)
             localStorage.setItem("seafoodList", JSON.stringify(storedDataS))
@@ -114,18 +107,14 @@ productBtns.forEach((button) => {
             storedDataS.forEach((item) => {
                 seafoodUlel.innerHTML += `<li>${item}</li>` 
             })
-           
         } else if (button.id === "frozen-btn") {
-
             let storedDataFz = JSON.parse(localStorage.getItem("frozenList")) || []
             storedDataFz.push(inputValue)
             localStorage.setItem("frozenList", JSON.stringify(storedDataFz))
             frozenUlel.innerHTML = ""
             storedDataFz.forEach((item)=>{
                 frozenUlel.innerHTML += `<li>${item}</li>`;
-                }
-            )
-            
+            })
         }
 
         productContainer.style.display = "none";
@@ -141,7 +130,7 @@ deleteBtn.addEventListener("click", function () {
     localStorage.removeItem("dryList");
     localStorage.removeItem("meatList");
     localStorage.removeItem("seafoodList");
-    localStorage.removeItem("FrozenList");
+    localStorage.removeItem("frozenList");
 
     // Clear lists using innerHTML
     freshUlel.innerHTML = "";
@@ -156,7 +145,7 @@ deleteBtn.addEventListener("click", function () {
 });
 
 resultBtn.addEventListener("click", function () {
-    const keys = ["freshList", "dryList", "meatList", "FrozenList", "seafoodList"];
+    const keys = ["freshList", "dryList", "meatList", "frozenList", "seafoodList"];
     const resultValues = keys.map(key => JSON.parse(localStorage.getItem(key)) || []);
     
     console.log("clicked");
@@ -168,7 +157,7 @@ resultBtn.addEventListener("click", function () {
             <ul>
                 ${list.map(item => `<li>${item}</li>`).join("")}
             </ul>`
-        ).join("")}
+        ).join("")} 
     `;
 
     resultBtn.style.display = "none"
@@ -182,5 +171,6 @@ backBtn.addEventListener("click", function (){
     backBtn.style.display = "none"
     resultBtn.style.display= "block"
       deleteBtn.style.display = "none"
+
   
 })

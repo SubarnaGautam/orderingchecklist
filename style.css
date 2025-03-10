@@ -127,6 +127,9 @@ row-gap: 20px;
     color: rgb(2, 2, 1);
     font-weight: bold
 }
+#error {
+    border: 2px solid red;
+}
 #result-el{
     border: 2px black solid;
     height: auto;
