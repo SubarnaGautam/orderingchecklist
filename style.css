@@ -10,16 +10,22 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #f4f4f4;
 }
 
-h1 {
-    font-size: 2rem;
+h1, h3 {
+    font-family: 'Helvetica Neue', sans-serif;
     color: #333;
 }
 
 #container-el {
     margin-top: 3px;
     margin-left: 5px;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 button {
@@ -32,6 +38,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding: 10px 20px;
+    margin: 10px 0;
 }
 
 button:hover {
@@ -45,6 +54,8 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
+    width: calc(100% - 22px);
+    margin: 10px 0;
 }
 
 #product-container {
@@ -59,6 +70,7 @@ button:hover {
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 #button-container button {
@@ -130,4 +142,72 @@ button:hover {
     text-decoration: underline;
     font-size: 1.5rem;
     margin-bottom: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #input-el {
+        width: 80%;
+    }
+
+    #table-container .table {
+        width: 90%;
+    }
+
+    #result-el {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    #input-el {
+        width: 90%;
+    }
+
+    button {
+        width: 80px;
+        height: 35px;
+    }
+
+    #button-container button {
+        width: 80px;
+        height: 35px;
+    }
+
+    #table-container .table {
+        width: 100%;
+    }
+
+    #result-el {
+        width: 100%;
+    }
+}
+
+.product-btn {
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
