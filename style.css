@@ -16,12 +16,14 @@ body {
 h1, h3 {
     font-family: 'Helvetica Neue', sans-serif;
     color: #333;
+    text-transform: capitalize; /* Added text-transform */
 }
 
 #container-el {
     margin-top: 3px;
     margin-left: 5px;
-    width: 80%;
+    width: 90%; /* Adjusted width */
+    max-width: 1200px; /* Added max-width */
     margin: auto;
     padding: 20px;
     background-color: #fff;
@@ -64,6 +66,7 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    width: 100%; /* Adjusted width */
 }
 
 #button-container {
@@ -96,13 +99,21 @@ button:hover {
     align-items: center;
     color: #663e3e;
     margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%; /* Adjusted width */
+    max-width: 1200px; /* Added max-width */
 }
 
 .table {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
-    width: 80%;
+    width: 100%; /* Adjusted width */
+    max-width: 1200px; /* Added max-width */
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -110,18 +121,32 @@ button:hover {
 .table h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-transform: capitalize; /* Added text-transform */
 }
 
 .table ul {
     padding-left: 0;
     list-style: none;
+    width: 100%;
 }
 
 .table li {
     text-align: left;
     color: #333;
     font-weight: bold;
-    padding: 5px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table li:last-child {
+    border-bottom: none;
+}
+
+.table li:nth-child(odd) {
+    background-color: #f1f1f1;
 }
 
 #error {
@@ -135,13 +160,20 @@ button:hover {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    width: 80%;
+    width: 100%; /* Adjusted width */
+    max-width: 800px; /* Added max-width */
+    padding: 20px; /* Adjusted padding */
+    margin: 0 auto; /* Centered the element */
+    text-align: center; /* Center text content */
+    overflow: auto; /* Added overflow for better handling of content */
+    display: none; /* Hide by default */
 }
 
 #result-el h3 {
     text-decoration: underline;
     font-size: 1.5rem;
     margin-bottom: 10px;
+    text-transform: capitalize; /* Added text-transform */
 }
 
 /* Media Queries */
@@ -160,10 +192,12 @@ button:hover {
 
     #table-container .table {
         width: 90%;
+        padding: 5px;
     }
 
     #result-el {
         width: 90%;
+        padding: 15px; /* Adjusted padding for smaller screens */
     }
 }
 
@@ -192,10 +226,12 @@ button:hover {
 
     #table-container .table {
         width: 100%;
+        padding: 5px;
     }
 
     #result-el {
         width: 100%;
+        padding: 10px; /* Adjusted padding for smaller screens */
     }
 }
 
