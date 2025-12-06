@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management System</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <header class="app-header">
+            <h1 id="heading-el" class="app-title">Shopping Order Checklist</h1>
+            
+        </header>
+
+        <main class="app-content">
+           
+            <!-- Input Section -->
+            <section class="input-section">
+                <input id="input-el" class="product-input" placeholder="Enter product name (e.g., apple, chicken)..." type="text" aria-label="Product input">
+                <button id="add-btn" class="btn btn-primary">Add Item</button>
+            </section>
+
+            <!-- Category Selection Section -->
+            <section id="product-container" class="category-section">
+                <h2 class="section-title">Select Product Category</h2>
+                <div class="button-container">
+                    <button id="fresh-btn" class="product-btn">🥬 Fresh</button>
+                    <button id="dry-btn" class="product-btn">🌾 Dry Goods</button>
+                    <button id="meat-btn" class="product-btn">🥩 Meat & Dairy</button>
+                    <button id="seafood-btn" class="product-btn">🐟 Seafood</button>
+                    <button id="frozen-btn" class="product-btn">❄️ Frozen</button>
+                </div>
+            </section>
+
+            <!-- Order Lists Section -->
+            <section id="table-container" class="orders-section">
+                <div class="table">
+                    <h3 class="table-title">🥬 Fresh & Vegetables</h3>
+                    <ul id="freshUl-el" class="items-list"></ul>
+                </div>
+                <div class="table">
+                    <h3 class="table-title">🌾 Dry Goods</h3>
+                    <ul id="dryUl-el" class="items-list"></ul>
+                </div>
+                <div class="table">
+                    <h3 class="table-title">🥩 Meat & Dairy</h3>
+                    <ul id="meatUl-el" class="items-list"></ul>
+                </div>
+                <div class="table">
+                    <h3 class="table-title">🐟 Seafood</h3>
+                    <ul id="seafoodUl-el" class="items-list"></ul>
+                </div>
+                <div class="table">
+                    <h3 class="table-title">❄️ Frozen</h3>
+                    <ul id="frozenUl-el" class="items-list"></ul>
+                </div>
+            </section>
+
+            <!-- Result Section -->
+            <section id="result-el" class="result-section">
+                <h2 class="section-title">Order Summary</h2>
+                <div id="result-content" class="result-content"></div>
+            </section>
+        </main>
+
+        <!-- Action Buttons -->
+        <footer class="app-footer">
+            <button id="result-btn" class="btn btn-info">View Summary</button>
+            <button id="delete-btn" class="btn btn-danger">Clear All</button>
+            <button id="back-btn" class="btn btn-secondary">Back</button>
+        </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
